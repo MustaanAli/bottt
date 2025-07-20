@@ -702,4 +702,26 @@ def main():
 
 if __name__ == '__main__':
     main()
+    from flask import Flask
+import threading
+import requests
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running!"
+
+def ping():
+    try:
+        requests.get("https://your-app-name.up.railway.app")  # ⚠️ ye link baad me change karenge
+    except:
+        pass
+    threading.Timer(300, ping).start()
+
+ping()
+
+if __name__ == "__main__":
+    app.run()
+
 
